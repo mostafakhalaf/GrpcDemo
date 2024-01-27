@@ -1,18 +1,7 @@
 syntax = "proto3";
 
 option csharp_namespace = "Server.Protos";
+import "models.proto";
 service TrackingService{
 	rpc SendMessage(TrackingMessage) returns (TrackingResponse);
-}
-message TrackingMessage{
-	int32 deviceId=1;
-	int32 speed=2;
-	Location location=3;
-}
-message Location{
-	double lat=1;
-	double Long=2;
-}
-message TrackingResponse{
-	bool success=1;
 }
