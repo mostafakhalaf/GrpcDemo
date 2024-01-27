@@ -1,0 +1,17 @@
+syntax = "proto3";
+option csharp_namespace = "Server.Protos";
+import "google/protobuf/timestamp.proto";
+
+message TrackingMessage{
+	int32 deviceId=1;
+	int32 speed=2;
+	Location location=3;
+	google.protobuf.Timestamp stamp=4;
+}
+message Location{
+	double lat=1;
+	double Long=2;
+}
+message TrackingResponse{
+	bool success=1;
+}

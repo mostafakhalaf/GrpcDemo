@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\models.proto" />
     <None Remove="Protos\telemetryService.proto" />
   </ItemGroup>
 
@@ -17,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\telemetryService.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\models.proto" GrpcServices="None"  ProtoRoot="Protos\"/>
+    <Protobuf Include="Protos\telemetryService.proto" GrpcServices="Server" ProtoRoot="Protos\" />
   </ItemGroup>
 
 </Project>
