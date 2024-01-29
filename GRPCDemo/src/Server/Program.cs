@@ -1,5 +1,10 @@
+using Server.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
+//
+builder.Services.AddGrpc();
+builder.Services.AddGrpcReflection();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -19,7 +24,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-app.MapControllers();
-
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGrpcService<TelemetryTrackingService>();
+    if (app.Environment.IsDevelopment())
+    {
+        endpoints.MapGrpcReflectionService();
+    }
+    endpoints.MapControllers();
+});
+//app.MapControllers();
 app.Run();
