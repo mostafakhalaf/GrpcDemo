@@ -15,6 +15,13 @@ to descripe model use descripe to show any thing<br>
 to descripe service and action on it<br>
 4-grpcurl localhost:5001 list<br>
 to show all service in app<br>
+and there is another easy tool it is ui <br>
+https://github.com/fullstorydev/grpcui/releases<br>
+and as the curl open it in cmd in same folder of ui tool <br>
+put this command and ui will open<br>
+grpcui localhost:5001<br>
+the commpress to files uploaded you can use thiem or download last of it <br>
+
 
 
 
