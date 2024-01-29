@@ -13,7 +13,8 @@ namespace Server.Services
         }
         public override Task<TrackingResponse> SendMessage(TrackingMessage request, ServerCallContext context)
         {
-            logger.LogInformation($"new message device id {request.DeviceId} location {request.Location}");
+            logger.LogInformation($"new message device id {request.DeviceId}" +
+                $"  location {request.Location}  Sensors Count {request.Sensor.Count()}");
             return Task.FromResult(new TrackingResponse() { Success = true });
         }
     }

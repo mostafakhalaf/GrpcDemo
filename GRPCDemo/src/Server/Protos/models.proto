@@ -7,6 +7,8 @@ message TrackingMessage{
 	int32 speed=2;
 	Location location=3;
 	google.protobuf.Timestamp stamp=4;
+	//this for list 
+	repeated Sensor sensor=5;
 }
 message Location{
 	double lat=1;
@@ -14,4 +16,8 @@ message Location{
 }
 message TrackingResponse{
 	bool success=1;
+}
+message Sensor {
+	string key = 1;
+	double value = 2;
 }
