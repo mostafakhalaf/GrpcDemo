@@ -1,6 +1,7 @@
 # GrpcDemo
 you should change properties of proto file to be like this
 ![image](https://github.com/mostafakhalaf/GrpcDemo/assets/17978254/0854a89c-3246-4875-ad7e-2911b96ea248)<br>
+you use google to use another varible type that not find <br>
 to can test Server og grpc you can use postman or this link<br>
 https://github.com/fullstorydev/grpcurl/releases
 or if not work you shoud find another tool to can test it 
