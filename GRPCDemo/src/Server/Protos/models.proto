@@ -10,7 +10,7 @@ message TrackingMessage{
 }
 message Location{
 	double lat=1;
-	double Long=2;
+	double long=2;
 }
 message TrackingResponse{
 	bool success=1;
