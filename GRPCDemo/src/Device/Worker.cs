@@ -8,7 +8,21 @@ namespace Device
     {
         private readonly ILogger<Worker> _logger;
         private readonly int deviceId;
+        private TrackingService.TrackingServiceClient _client;
+        private TrackingService.TrackingServiceClient Client
+        {
+            get
+            {
+                if (_client == null)
+                {
+                    var channel = GrpcChannel.ForAddress("https://localhost:5001");
 
+                    _client = new TrackingService.TrackingServiceClient(channel);
+                }
+
+                return _client;
+            }
+        }
         public Worker(ILogger<Worker> logger, int deviceId)
         {
             _logger = logger;
@@ -20,8 +34,6 @@ namespace Device
             while (!stoppingToken.IsCancellationRequested)
             {
                 Random random = new Random();
-                var channel = GrpcChannel.ForAddress("https://localhost:5001");
-                var client = new TrackingService.TrackingServiceClient(channel);
                 var request = new TrackingMessage
                 {
                     DeviceId = deviceId,
@@ -38,7 +50,7 @@ namespace Device
                     Key = "sensor 1",
                     Value = 2
                 });
-                var respons = await client.SendMessageAsync(request);
+                var respons = await Client.SendMessageAsync(request);
                 _logger.LogInformation($"Response {respons.Success}");
                 await Task.Delay(1000, stoppingToken);
             }
